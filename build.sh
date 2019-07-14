@@ -8,7 +8,7 @@ echo "installing homebrew..."
 echo -ne '\n'
 
 # install the important packages
-declare -a arr=(python3 julia visual-studio-code)
+declare -a arr=(git python3 julia r visual-studio-code virtualbox)
 for program in "${arr[@]}"
     do
         {
@@ -18,4 +18,12 @@ for program in "${arr[@]}"
             echo installing $program
             brew cask install $program
         }
-    done
+done
+
+# install some python necessities that aren't part of standard library
+declare -a arr=(virtualenv pytest)
+for package in "${arr[@]}"
+    do
+        echo pip installing $package...
+        pip install $package
+done
